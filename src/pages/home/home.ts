@@ -21,7 +21,14 @@ export class HomePage {
     .subscribe((musiclist) => {
       allMusicloadingController.dismiss();
       this.allMusic = musiclist
-    })
+    });
   }
 
+addOneSong(refresher){
+  this.musicProvider.getOneSong()
+  .subscribe(oneSong => {
+    this.allMusic.unshift(oneSong[0]);
+    refresher.complete();
+  });
+}
 }
