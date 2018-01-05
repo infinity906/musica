@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { MusicProvider } from "../../providers/music/music"
+import { SocialSharing } from '@ionic-native/social-sharing'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -8,7 +9,7 @@ import { MusicProvider } from "../../providers/music/music"
 export class HomePage {
   public allMusic = [];
 
-  constructor(private actionSheetController: ActionSheetController, private loadingController: LoadingController, private musicProvider: MusicProvider, public navCtrl: NavController) {
+  constructor(private socialSharing:SocialSharing, private actionSheetController: ActionSheetController, private loadingController: LoadingController, private musicProvider: MusicProvider, public navCtrl: NavController) {
 
   }
 
@@ -31,17 +32,23 @@ addOneSong(refresher){
     refresher.complete();
   });
 }
-shareSong(){
+shareSong(music){
   let shareSongActionSheet = this.actionSheetController.create({
     title: "Share songs with friends",
     buttons: [
       {
         text: "Share on facebook",
-        icon: "logo-facebook"
+        icon: "logo-facebook",
+        handler: ()=>{
+          this.socialSharing.shareViaFacebook(music.name, music.image, music.music_url);
+        }
       },
       {
         text: "Share on twitter",
-        icon: "logo-twitter"
+        icon: "logo-twitter",
+        handler: ()=>{
+          this.socialSharing.shareViaTwitter(music.name, music.image, music.music_url);
+        }
       },
       {
         text: "Share",
