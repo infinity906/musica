@@ -53,6 +53,9 @@ shareSong(music){
       {
         text: "Share",
         icon: "share"
+        handler: ()=> {
+          this.socialSharing.share(music.name, "", music.image, music.image_url);
+        }
       },
       {
         text:"cancel",
