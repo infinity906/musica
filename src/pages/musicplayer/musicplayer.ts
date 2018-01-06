@@ -30,7 +30,7 @@ export class MusicplayerPage {
       this.songMedia = this.mediaPlugin.create(this.music["music_url"]);
       this.songMedia.play();
     } else if (this.IsMusicPaused === true){
-        this.songmedia.play();
+        this.songMedia.play();
         this.IsMusicPaused = false;
       }
 
