@@ -26,7 +26,7 @@ export class MusicplayerPage {
 
   playMusic(){
     if (this.songMedia === null){
-      this.songMedia = this.mediaPlugin.create(this.music.music_url);
+      this.songMedia = this.mediaPlugin.create(this.music["music_url"]);
       this.songMedia.play();
     }
 
