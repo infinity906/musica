@@ -34,6 +34,9 @@ addOneSong(refresher){
     refresher.complete();
   });
 }
+addtoFavorites(music){
+  this.musicProvider.addtoFavorites(music)
+}
 shareSong(music){
   let shareSongActionSheet = this.actionSheetController.create({
     title: "Share songs with friends",
